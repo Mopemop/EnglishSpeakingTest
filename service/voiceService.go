@@ -85,10 +85,10 @@ func connectAPI() string {
 		Date:        time.Now().In(time.FixedZone("GMT", 0)).Format(time.RFC1123),
 		RequestLine: "GET /v2/open-ise HTTP/1.1",
 	}
-	h := hmac.New(sha256.New, []byte("MmYxZTM5YzRiNmQ4NWQ3ZDljODAwZmM5"))
+	h := hmac.New(sha256.New, []byte("科大讯飞控制台的APISecret"))
 	h.Write([]byte("host: " + signatureOrigin.Host + "\n" + "date: " + signatureOrigin.Date + "\n" + signatureOrigin.RequestLine))
 	auth := auth{
-		ApiKey:    "43133980e3dc7e4f3c8aadbc98748313",
+		ApiKey:    "科大讯飞控制台的APIkey",
 		Algorithm: "hmac-sha256",
 		Signature: base64.StdEncoding.EncodeToString(h.Sum(nil)),
 		Headers:   "host date request-line",
@@ -136,7 +136,7 @@ func Communication(voice []byte) (bool, ReadChapter) {
 
 	// 发送消息
 	// 发送第一次消息，确定交互信息
-	common := CommonData{"47b38ccb"}
+	common := CommonData{"科大讯飞控制台的APPID"}
 	data := paraData{status}
 	req := paraRequest{common, message, data}
 	jsonBytes, _ := json.Marshal(req)
