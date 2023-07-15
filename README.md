@@ -1,0 +1,2 @@
+# EnglishSpeakingTest
+基于科大讯飞webapi实现的go语言英语口语测评demo
